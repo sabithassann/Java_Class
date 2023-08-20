@@ -32,7 +32,7 @@ public class PassBankDataToDatabase {
         Connection connection = null;
 
         try {
-            String url = "jdbc:mysql://localhost:3306/bankdetails";
+            String url = "jdbc:mysql://localhost:3306/bankdetails";      
             String username = "root";
             String password = "sabit@1234";
 
