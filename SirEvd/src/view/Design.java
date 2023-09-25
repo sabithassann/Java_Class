@@ -4,12 +4,12 @@
  */
 package view;
 
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import util.Dbcon;
@@ -32,6 +32,17 @@ public class Design extends javax.swing.JFrame {
     public Design() {
         initComponents();
         getAllStudent();
+    }
+    
+    public void reset(){
+        txtId.setText(null);
+        txtName.setText(null);
+        txtAge.setText(null);
+        txtDate.setDate(null);
+        //radioFemale.setText(null);
+        //radioMale.setText(null);
+        
+        
     }
     
     public  Date DateToSqlDate(java.util.Date  utilDate){
@@ -60,11 +71,13 @@ public class Design extends javax.swing.JFrame {
              
              while (rs.next()) {
                  
-                int roll = rs.getInt("id");
+                int id = rs.getInt("id");
                 String name = rs.getString("name");
                 int age = rs.getInt("age");
+                Date showingDate=rs.getDate("date");
+                String gender=rs.getString("gender");
 
-                model.addRow(new Object[]{roll, name, age});
+                model.addRow(new Object[]{id, name, age,showingDate,gender});
             }
 
             ps.close();
@@ -173,16 +186,31 @@ public class Design extends javax.swing.JFrame {
         btnUpdate.setBackground(new java.awt.Color(255, 255, 204));
         btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpdateMouseClicked(evt);
+            }
+        });
         jPanel2.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, -1, -1));
 
         btnDelete.setBackground(new java.awt.Color(255, 153, 153));
         btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeleteMouseClicked(evt);
+            }
+        });
         jPanel2.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, -1, -1));
 
         btnReset.setBackground(new java.awt.Color(204, 204, 255));
         btnReset.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnReset.setText("Reset");
+        btnReset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnResetMouseClicked(evt);
+            }
+        });
         jPanel2.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 330, 470));
@@ -200,6 +228,11 @@ public class Design extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        showTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(showTable);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
@@ -232,12 +265,91 @@ public class Design extends javax.swing.JFrame {
             ps.executeUpdate();
             ps.close();
             con.getCon().close();
+            reset();
+            getAllStudent();
             JOptionPane.showMessageDialog(rootPane, "Data Submitted");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, "Data Not Submitted");
             java.util.logging.Logger.getLogger(Design.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSubmitMouseClicked
+
+    private void btnUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMouseClicked
+        // TODO add your handling code here:
+        sql="update project set name=?,age=?,date=?,gender=? where id=?";
+        String gender="";
+        if(radioMale.isSelected()){
+            gender="Male";
+        }
+        else if(radioFemale.isSelected()){
+            gender="Female";
+        }
+        
+        try {
+            ps=con.getCon().prepareStatement(sql);
+            
+            
+            ps.setString(1, txtName.getText().trim());
+            ps.setInt(2, Integer.parseInt(txtAge.getText().trim()));
+            ps.setDate(3, DateToSqlDate(txtDate.getDate()));
+            ps.setString(4, gender);
+            ps.setInt(5, Integer.parseInt(txtId.getText().trim()));
+            
+            ps.executeUpdate();
+            ps.close();
+            con.getCon().close();
+            
+            JOptionPane.showMessageDialog(rootPane, "Data Updated");
+            reset();
+            getAllStudent();
+        } catch (SQLException ex) {
+            Logger.getLogger(Design.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnUpdateMouseClicked
+
+    private void showTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showTableMouseClicked
+        // TODO add your handling code here:
+        int rowIndex=showTable.getSelectedRow();
+        
+        String id=showTable.getModel().getValueAt(rowIndex, 0).toString();
+        String name=showTable.getModel().getValueAt(rowIndex, 1).toString();
+        String age=showTable.getModel().getValueAt(rowIndex, 2).toString();
+        String date=showTable.getModel().getValueAt(rowIndex, 3).toString();
+        String gender=showTable.getModel().getValueAt(rowIndex, 4).toString();
+        
+        txtId.setText(id);
+        txtName.setText(name);
+        txtAge.setText(age);
+        //txtDate.setDate(date);
+        
+    }//GEN-LAST:event_showTableMouseClicked
+
+    private void btnResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnResetMouseClicked
+        // TODO add your handling code here:
+        reset();
+    }//GEN-LAST:event_btnResetMouseClicked
+
+    private void btnDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteMouseClicked
+        // TODO add your handling code here:
+        sql="delete from project where id=?";
+        
+        try {
+            ps=con.getCon().prepareStatement(sql);
+            ps.setInt(1, Integer.parseInt(txtId.getText()));
+            
+            ps.executeUpdate();
+            ps.close();
+            con.getCon().close();
+            
+            JOptionPane.showMessageDialog(rootPane, "Data Deleted");
+            reset();
+            getAllStudent();
+        } catch (SQLException ex) {
+            Logger.getLogger(Design.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnDeleteMouseClicked
 
     /**
      * @param args the command line arguments
