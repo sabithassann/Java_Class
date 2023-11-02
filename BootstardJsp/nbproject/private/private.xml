@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/BootstardJsp/web/success.jsp</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/BootstardJsp/web/header.jsp</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/BootstardJsp/web/footer.jsp</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/BootstardJsp/web/addStudent.jsp</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/BootstardJsp/web/addStudentForm.jsp</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/BootstardJsp/web/showAllStudent.jsp</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/BootstardJsp/src/java/model/Student.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/BootstardJsp/web/editform.jsp</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/BootstardJsp/src/java/util/DbCon.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/BootstardJsp/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/BootstardJsp/web/delete.jsp</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/BootstardJsp/web/home.jsp</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/BootstardJsp/src/java/dao/StudentDao.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/BootstardJsp/web/edit.jsp</file>
+        </group>
+    </open-files>
+</project-private>
