@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    </h:head>
+    <h:body>
+        <div class="container mt-4">
+            <h:panelGrid columns="2">
+                <h:commandButton action="viewallstudent.xhtml" value="View All" class="btn btn-primary" />
+            </h:panelGrid>
+            <h:form>
+                <h:inputHidden value="#{studentManageBean.student.id}" />
+                <div class="form-group">
+                    <label for="givenName">Given Name</label>
+                    <h:inputText id="givenName" value="#{studentManageBean.student.givenName}" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <h:inputText id="lastName" value="#{studentManageBean.student.lastName}" class="form-control" />
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Gender</label>
+                        <div class="form-check">
+                            <h:selectOneRadio value="#{studentManageBean.student.gender}" class="form-check-input">
+                                <f:selectItem itemValue="Male" itemLabel="Male" />
+                                <f:selectItem itemValue="Female" itemLabel="Female" />
+                            </h:selectOneRadio>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="subject">Subject</label>
+                        <h:selectOneMenu id="subject" value="#{studentManageBean.student.subject}" class="form-control">
+                            <f:selectItem itemValue="JEE" itemLabel="JEE" />
+                            <f:selectItem itemValue="C#" itemLabel="C#" />
+                            <f:selectItem itemValue="NT" itemLabel="NT" />
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+                <h:commandButton action="#{studentManageBean.saveStudent()}" value="Update" class="btn btn-success" />
+            </h:form>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </h:body>
+</html>
