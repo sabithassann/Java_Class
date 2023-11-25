@@ -1,0 +1,53 @@
+{
+  "student": [
+    {
+      "id": 25,
+      "firstName": "sabit",
+      "lastName": "hasan",
+      "gender": "Male",
+      "hobby": [
+        "Reading",
+        "Gaming"
+      ]
+    },
+    {
+      "id": 28,
+      "firstName": "sabit",
+      "lastName": "hasan",
+      "gender": "Male",
+      "hobby": [
+        "Reading",
+        "Gaming"
+      ]
+    },
+    {
+      "id": 29,
+      "firstName": "Tameem",
+      "lastName": "Hasan",
+      "gender": "Male",
+      "hobby": [
+        "Reading",
+        "Gaming"
+      ]
+    },
+    {
+      "id": 30,
+      "firstName": "nahid",
+      "lastName": "dfdf",
+      "gender": "Male",
+      "hobby": [
+        "Reading"
+      ]
+    },
+    {
+      "id": 31,
+      "firstName": "sabit",
+      "lastName": "hasan",
+      "gender": "Male",
+      "hobby": [
+        "Reading",
+        "Gaming"
+      ]
+    }
+  ]
+}
