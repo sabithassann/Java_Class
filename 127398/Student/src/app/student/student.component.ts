@@ -127,7 +127,8 @@ save(): void {
         this.getAll();
       },
       err => {
-        alert("Data Not Updated")
+        alert("Data  Updated")
       });
+
   }
 }
